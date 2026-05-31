@@ -1,0 +1,32 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+/logs/
+
+# Uploads
+/public/uploads/
+
+# Compiled assets
+/public/assets/css/*.min.css
+/public/assets/js/*.min.js
+
+# Composer
+composer.lock

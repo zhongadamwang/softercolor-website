@@ -1,0 +1,58 @@
+{
+  "project_id": "PRJ-01",
+  "org_id": "ORG-05",
+  "generated": "2026-05-31",
+  "who": {
+    "primary_stakeholders": [
+      {"role": "Founder / Owner", "name": "Adam Wang", "authority": "full", "notes": "Sole decision-maker, content owner, service provider"},
+      {"role": "Prospective Clients", "description": "Enterprise organizations seeking software development or AI consulting", "authority": "end-user"}
+    ],
+    "secondary_stakeholders": [
+      {"role": "Search Engines", "notes": "Indirect audience for SEO"},
+      {"role": "HostGator", "notes": "Hosting constraint setter"}
+    ]
+  },
+  "what": {
+    "in_scope": ["Home", "Services", "Products", "About", "Contact", "Privacy Policy", "Contact form with email", "Analytics", "SEO", "Responsive design", "WCAG 2.1 AA", "PHP + HostGator deployment"],
+    "out_of_scope": ["Blog", "Portfolio", "Testimonials", "Multi-language", "E-commerce", "Client portal", "Login"],
+    "differentiators": ["EDPS methodology", "Enterprise application expertise", "AI-aided development consulting", "Proprietary product pipeline"]
+  },
+  "when": {
+    "milestones": [
+      {"name": "Requirements complete", "status": "done", "date": "2026-05-31"},
+      {"name": "Goals defined", "status": "done", "date": "2026-05-31"},
+      {"name": "Design phase", "status": "pending"},
+      {"name": "Development", "status": "pending"},
+      {"name": "Launch", "status": "pending", "notes": "Target date TBD"},
+      {"name": "Phase 2 (Blog, Portfolio, French)", "status": "future"}
+    ]
+  },
+  "where": {
+    "hosting": "HostGator shared hosting (cPanel, PHP + MySQL)",
+    "domain": "softercolor.com",
+    "ssl": "Let's Encrypt or HostGator-provided",
+    "analytics": "Google Analytics or Plausible (TBD)",
+    "email_delivery": "PHPMailer + SMTP"
+  },
+  "why": {
+    "business_drivers": [
+      "No existing web presence",
+      "Two distinct service lines need clear positioning",
+      "EDPS is a unique differentiator",
+      "Enterprise clients expect credible web presence"
+    ],
+    "value_proposition": "Build Smarter. Evolve Faster. — custom enterprise software and AI consulting powered by EDPS model-driven development."
+  },
+  "how": {
+    "stack": "PHP (lightweight), HTML5/CSS3, minimal JS, MySQL available",
+    "deployment": "SFTP to HostGator cPanel",
+    "content_strategy": "Hardcoded — no CMS (infrequent updates)",
+    "contact_form": "PHPMailer + SMTP for reliable email delivery",
+    "risks": [
+      {"risk": "Email delivery unreliability", "mitigation": "Use PHPMailer + SMTP"},
+      {"risk": "HostGator PHP version constraints", "mitigation": "Confirm PHP 8.x support"},
+      {"risk": "SSL not auto-provisioned", "mitigation": "Enable Let's Encrypt via cPanel"},
+      {"risk": "No analytics baseline", "mitigation": "Set up before launch"}
+    ]
+  }
+}

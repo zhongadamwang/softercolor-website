@@ -1,0 +1,89 @@
+{
+  "project_id": "PRJ-01",
+  "org_id": "ORG-05",
+  "generated": "2026-05-31",
+  "goals": [
+    {
+      "id": "G-001",
+      "title": "Establish Online Presence & Credibility",
+      "statement": "Launch a professional website at softercolor.com that establishes Softercolor as a credible custom software development and AI consulting firm to prospective enterprise clients.",
+      "success_criteria": [
+        "Website is live at softercolor.com with HTTPS",
+        "All five pages complete and accessible",
+        "Brand identity consistent across all pages"
+      ],
+      "kpis": [
+        "Site live within agreed timeline",
+        "PageSpeed score ≥ 85 desktop + mobile",
+        "Zero broken links at launch"
+      ],
+      "source_requirements": ["R-001", "R-006", "R-015", "R-019", "R-023"],
+      "open_questions": ["Is there a target launch date?"]
+    },
+    {
+      "id": "G-002",
+      "title": "Communicate Service Offering Clearly",
+      "statement": "Ensure prospective clients can clearly understand Softercolor's three service offerings and self-identify the right service for their needs.",
+      "success_criteria": [
+        "Services page describes all three offerings",
+        "Each service references EDPS methodology",
+        "Products section with placeholder content"
+      ],
+      "kpis": [
+        "Avg. time on Services page > 45 seconds",
+        "Bounce rate on Services page < 60%"
+      ],
+      "source_requirements": ["R-002", "R-003", "R-004", "R-005"],
+      "open_questions": []
+    },
+    {
+      "id": "G-003",
+      "title": "Generate Qualified Consultation Inquiries",
+      "statement": "Convert website visitors into qualified leads by directing them to submit a contact inquiry via the contact form, routed to info@softercolor.com.",
+      "success_criteria": [
+        "Contact form functional with four inquiry types",
+        "Form submissions delivered to info@softercolor.com",
+        "CTA present on every page"
+      ],
+      "kpis": [
+        "Contact form submission rate > 2% of unique visitors",
+        "Zero failed form deliveries"
+      ],
+      "source_requirements": ["R-007", "R-008", "R-009", "R-011"],
+      "open_questions": ["Should form submissions also be stored in MySQL as backup?"]
+    },
+    {
+      "id": "G-004",
+      "title": "Achieve Organic Discoverability",
+      "statement": "Ensure the website ranks for relevant search terms related to custom software development and AI consulting services.",
+      "success_criteria": [
+        "SEO metadata, sitemap.xml, robots.txt, schema.org in place at launch",
+        "Analytics tracking configured from day one"
+      ],
+      "kpis": [
+        "Google Search Console: 0 errors at launch",
+        "Organic impressions growing month-over-month within 90 days"
+      ],
+      "source_requirements": ["R-012", "R-016", "R-017"],
+      "open_questions": ["Any target keywords in mind?"]
+    },
+    {
+      "id": "G-005",
+      "title": "Meet Technical & Compliance Standards",
+      "statement": "Ensure the website meets performance, accessibility, security, and legal requirements for a professional services firm.",
+      "success_criteria": [
+        "HTTPS with valid SSL",
+        "WCAG 2.1 AA compliant",
+        "Privacy Policy live and PIPEDA-compliant",
+        "LCP < 2.5s"
+      ],
+      "kpis": [
+        "WCAG audit: 0 critical violations",
+        "SSL Labs grade: A or higher",
+        "LCP ≤ 2.5s via PageSpeed Insights"
+      ],
+      "source_requirements": ["R-013", "R-014", "R-015", "R-017", "R-018", "R-022"],
+      "open_questions": []
+    }
+  ]
+}

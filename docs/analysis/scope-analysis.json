@@ -1,0 +1,50 @@
+{
+  "project_id": "PRJ-01",
+  "org_id": "ORG-05",
+  "generated": "2026-05-31",
+  "classifications": [
+    {"req_id": "R-001", "feature": "Hero section with tagline + CTA", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-002", "feature": "Services page (3 offerings)", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-003", "feature": "Software Dev Consulting description", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-004", "feature": "AI Consulting description", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-005", "feature": "Products placeholder section", "class": "core", "business_value": "medium", "complexity": "low"},
+    {"req_id": "R-006", "feature": "About page (founder + EDPS)", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-007", "feature": "Contact page + email display", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-008", "feature": "Contact form (4 fields + inquiry type)", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-009", "feature": "Form → email via PHPMailer", "class": "core", "business_value": "high", "complexity": "medium"},
+    {"req_id": "R-010", "feature": "Global navigation menu", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-011", "feature": "CTA on every page", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-012", "feature": "Analytics integration", "class": "enhancement", "business_value": "medium", "complexity": "low"},
+    {"req_id": "R-013", "feature": "Fully responsive design", "class": "core", "business_value": "high", "complexity": "medium"},
+    {"req_id": "R-014", "feature": "PageSpeed ≥ 85", "class": "enhancement", "business_value": "medium", "complexity": "medium"},
+    {"req_id": "R-015", "feature": "HTTPS + SSL", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-016", "feature": "SEO: meta, sitemap, schema.org", "class": "enhancement", "business_value": "high", "complexity": "medium"},
+    {"req_id": "R-017", "feature": "LCP < 2.5s", "class": "enhancement", "business_value": "medium", "complexity": "medium"},
+    {"req_id": "R-018", "feature": "WCAG 2.1 AA accessibility", "class": "enhancement", "business_value": "medium", "complexity": "medium"},
+    {"req_id": "R-019", "feature": "Consistent brand identity", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-020", "feature": "PHP, no heavy CMS", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-021", "feature": "HostGator shared hosting deploy", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-022", "feature": "Privacy Policy (PIPEDA)", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-023", "feature": "Domain: softercolor.com", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-024", "feature": "English only", "class": "core", "business_value": "high", "complexity": "low"},
+    {"req_id": "R-025", "feature": "Out-of-scope items", "class": "optional", "business_value": "low", "complexity": "high"}
+  ],
+  "roadmap": {
+    "phase_0": {
+      "name": "Foundation",
+      "items": ["Domain setup", "HostGator provisioning", "SSL certificate", "PHPMailer setup", "Analytics account", "Brand assets"]
+    },
+    "phase_1": {
+      "name": "MVP Launch",
+      "req_ids": ["R-001","R-002","R-003","R-004","R-005","R-006","R-007","R-008","R-009","R-010","R-011","R-013","R-015","R-019","R-020","R-021","R-022","R-023","R-024"]
+    },
+    "phase_2": {
+      "name": "Enhancement",
+      "req_ids": ["R-012","R-014","R-016","R-017","R-018"]
+    },
+    "phase_3": {
+      "name": "Expansion",
+      "items": ["Blog", "Portfolio", "Testimonials", "French language", "Product detail pages"]
+    }
+  }
+}
