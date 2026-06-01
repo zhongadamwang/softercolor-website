@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /form-handler.php
+Disallow: /public/form-handler.php
 
-Sitemap: https://softercolor.com/sitemap.xml
+Sitemap: https://www.softercolor.com/sitemap.xml

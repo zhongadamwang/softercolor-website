@@ -2,6 +2,38 @@
 // softercolor — Services
 require_once __DIR__ . '/../src/layout/header.php';
 ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "softercolor",
+  "url": "https://www.softercolor.com",
+  "description": "Custom software development and AI consulting powered by EDPS model-driven methodology.",
+  "areaServed": "CA",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Consulting Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Software Development Consulting",
+          "description": "Enterprise application development using EDPS model-driven methodology."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Consulting",
+          "description": "Building AI-aided software development capabilities within your organization."
+        }
+      }
+    ]
+  }
+}
+</script>
 
 <main>
 

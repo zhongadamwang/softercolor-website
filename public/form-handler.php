@@ -18,7 +18,7 @@ if (file_exists($envFile)) {
 
 // Validate request
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /contact.php');
+    header('Location: /contact');
     exit;
 }
 
@@ -30,7 +30,7 @@ $inquiry_type = htmlspecialchars(trim($_POST['inquiry_type'] ?? ''));
 $message      = htmlspecialchars(trim($_POST['message'] ?? ''));
 
 if (!$name || !$email || !$inquiry_type || !$message) {
-    header('Location: /contact.php?error=1');
+    header('Location: /contact?error=1');
     exit;
 }
 
@@ -67,9 +67,9 @@ try {
     $mail->Body    = $body;
 
     $mail->send();
-    header('Location: /contact.php?sent=1');
+    header('Location: /contact?sent=1');
 } catch (Exception $e) {
     error_log('PHPMailer error: ' . $mail->ErrorInfo);
-    header('Location: /contact.php?error=1');
+    header('Location: /contact?error=1');
 }
 exit;
