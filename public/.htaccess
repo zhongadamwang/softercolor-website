@@ -15,10 +15,6 @@ RewriteRule ^([^\.]+)$ $1.php [NC,L]
   Deny from all
 </FilesMatch>
 
-# Block form-handler direct access
-<Files "form-handler.php">
-  Order allow,deny
-  Deny from all
-</Files>
-RewriteCond %{HTTP_REFERER} ^https://softercolor\.com [NC]
-RewriteRule ^form-handler\.php$ - [L]
+# Block form-handler.php unless submitted from softercolor.com
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?softercolor\.com [NC]
+RewriteRule ^form-handler\.php$ - [F,L]
