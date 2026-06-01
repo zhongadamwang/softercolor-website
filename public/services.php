@@ -35,7 +35,7 @@ require_once __DIR__ . '/../src/layout/header.php';
 }
 </script>
 
-<main>
+<main id="main-content">
 
   <!-- Page Hero -->
   <section class="page-hero">

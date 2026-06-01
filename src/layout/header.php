@@ -130,6 +130,7 @@ $ogImage = 'https://www.softercolor.com/assets/brand/og-image.png';
   <link rel="stylesheet" href="/assets/css/main.min.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header class="site-header">
     <div class="container">
       <a href="/" class="logo" aria-label="softercolor home">

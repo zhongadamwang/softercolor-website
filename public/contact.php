@@ -15,7 +15,7 @@ $inquiryMap = [
 $preInquiry = $inquiryMap[$preSelected] ?? '';
 ?>
 
-<main>
+<main id="main-content">
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -40,6 +40,7 @@ $preInquiry = $inquiryMap[$preSelected] ?? '';
           <?php endif; ?>
 
           <form action="/public/form-handler.php" method="POST" novalidate>
+            <p class="required-note">Fields marked <span style="color: var(--color-error);" aria-hidden="true">*</span> <span class="visually-hidden">with an asterisk</span> are required.</p>
             <div class="grid-2" style="gap: var(--space-4);">
               <div class="form-group" style="margin-bottom: 0;">
                 <label for="name">Name <span style="color: var(--color-error);">*</span></label>

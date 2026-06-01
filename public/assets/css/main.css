@@ -477,7 +477,7 @@ textarea { min-height: 140px; resize: vertical; }
 
 .footer-brand p {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.65); /* contrast 8.03 ✅ */
 }
 
 .footer-nav {
@@ -489,7 +489,7 @@ textarea { min-height: 140px; resize: vertical; }
 .footer-nav a,
 .footer-contact a {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.65); /* contrast 8.03 ✅ */
   transition: color var(--transition);
 }
 
@@ -500,7 +500,7 @@ textarea { min-height: 140px; resize: vertical; }
 
 .footer-copy {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55); /* contrast 6.09 ✅ */
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: var(--space-6);
 }
@@ -597,4 +597,103 @@ textarea { min-height: 140px; resize: vertical; }
   .card { padding: var(--space-6); }
 
   section { padding-block: var(--space-10); }
+}
+
+/* ── 17. Accessibility ─────────────────────────────────────── */
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.1s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Visible focus indicators for all interactive elements */
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Override for elements that have their own focus style */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none; /* handled by box-shadow in form styles */
+}
+
+/* Custom select arrow (accessible, not relying on default) */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+
+/* Required field indicator accessible text */
+.required-note {
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+  margin-bottom: var(--space-6);
+}
+
+/* Ensure links have visible underline on hover for clarity */
+main a:not(.btn):not(.logo):not(.card a) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+main a:not(.btn):not(.logo) {
+  text-decoration: none;
+}
+
+main a:not(.btn):not(.logo):hover {
+  text-decoration: underline;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .btn {
+    border: 2px solid ButtonText;
+  }
+  .card {
+    border: 1px solid ButtonText;
+  }
+}
+
+/* Visually hidden but accessible to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
 }

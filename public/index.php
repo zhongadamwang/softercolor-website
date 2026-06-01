@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../src/layout/header.php';
 ?>
 
-<main>
+<main id="main-content">
 
   <!-- Hero -->
   <section class="hero">
