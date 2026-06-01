@@ -35,21 +35,27 @@ jobs:
             ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/
 
       - name: Write .env on server
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
+          printf '%s\n' \
+            "SMTP_HOST=smtp.hostgator.com" \
+            "SMTP_PORT=587" \
+            "SMTP_USER=${SMTP_USER}" \
+            "SMTP_PASS=${SMTP_PASS}" \
+            "SMTP_FROM=${SMTP_FROM}" \
+            "SMTP_FROM_NAME=Softercolor Website" \
+            "CONTACT_TO=info@softercolor.com" \
+            "APP_ENV=production" \
+            "APP_DEBUG=false" | \
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "cat > ${{ secrets.DEPLOY_PATH }}/.env << 'ENVEOF'
-SMTP_HOST=smtp.hostgator.com
-SMTP_PORT=587
-SMTP_USER=${{ secrets.SMTP_USER }}
-SMTP_PASS=${{ secrets.SMTP_PASS }}
-SMTP_FROM=${{ secrets.SMTP_FROM }}
-SMTP_FROM_NAME=Softercolor Website
-CONTACT_TO=info@softercolor.com
-APP_ENV=production
-APP_DEBUG=false
-ENVEOF
-            chmod 600 ${{ secrets.DEPLOY_PATH }}/.env"
+            ${DEPLOY_USER}@${DEPLOY_HOST} \
+            "cat > ${DEPLOY_PATH}/.env && chmod 600 ${DEPLOY_PATH}/.env"
 
       - name: Verify deployment
         run: |
