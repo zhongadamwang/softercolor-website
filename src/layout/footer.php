@@ -22,6 +22,6 @@
       <p class="footer-copy">&copy; <?= date('Y') ?> softercolor. All rights reserved.</p>
     </div>
   </footer>
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.min.js" defer></script>
 </body>
 </html>

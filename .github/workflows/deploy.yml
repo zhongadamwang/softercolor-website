@@ -15,6 +15,27 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
 
+      - name: Minify CSS and JS
+        run: |
+          node -e "
+            const fs = require('fs');
+            // CSS
+            let css = fs.readFileSync('public/assets/css/main.css', 'utf8');
+            css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+            css = css.replace(/\s{2,}/g, ' ');
+            css = css.replace(/\n/g, '');
+            css = css.replace(/\s*([{}:;,>~+])\s*/g, '\$1');
+            css = css.replace(/;}/g, '}').trim();
+            fs.writeFileSync('public/assets/css/main.min.css', css);
+            // JS
+            let js = fs.readFileSync('public/assets/js/main.js', 'utf8');
+            js = js.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+            js = js.replace(/\s{2,}/g, ' ').replace(/\n/g, '').trim();
+            fs.writeFileSync('public/assets/js/main.min.js', js);
+            console.log('CSS:', fs.statSync('public/assets/css/main.min.css').size, 'bytes');
+            console.log('JS:', fs.statSync('public/assets/js/main.min.js').size, 'bytes');
+          "
+
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
