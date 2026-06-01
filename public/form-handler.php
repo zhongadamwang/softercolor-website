@@ -58,7 +58,7 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = (int)($_ENV['SMTP_PORT'] ?? 587);
 
-    $mail->setFrom($_ENV['SMTP_FROM'] ?? 'info@softercolor.com', $_ENV['SMTP_FROM_NAME'] ?? 'Softercolor Website');
+    $mail->setFrom($_ENV['SMTP_USER'] ?? 'adamwang@softercolor.com', $_ENV['SMTP_FROM_NAME'] ?? 'Softercolor Website');
     $mail->addAddress($_ENV['CONTACT_TO'] ?? 'info@softercolor.com');
     $mail->addReplyTo($email, $name);
 

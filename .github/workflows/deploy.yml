@@ -44,7 +44,7 @@ jobs:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
           printf '%s\n' \
-            "SMTP_HOST=mail.softercolor.com" \
+            "SMTP_HOST=smtp.gmail.com" \
             "SMTP_PORT=587" \
             "SMTP_USER=${SMTP_USER}" \
             "SMTP_PASS=${SMTP_PASS}" \
