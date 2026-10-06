@@ -1,9 +1,19 @@
 <?php
 // softercolor — Contact
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../src/layout/header.php';
 
 $success = isset($_GET['sent']) && $_GET['sent'] === '1';
 $error   = isset($_GET['error']) && $_GET['error'] === '1';
+$spam    = isset($_GET['error']) && $_GET['error'] === 'bot';
+
+// Generate a simple human-check math challenge (session-backed, no external API)
+$num1 = random_int(2, 9);
+$num2 = random_int(2, 9);
+$_SESSION['hc_answer'] = $num1 + $num2;
+$_SESSION['hc_issued_at'] = time();
 
 // Pre-select inquiry type if passed via query string
 $preSelected = htmlspecialchars($_GET['inquiry'] ?? '');
@@ -35,12 +45,24 @@ $preInquiry = $inquiryMap[$preSelected] ?? '';
         <div>
           <?php if ($success): ?>
             <div class="alert alert-success">Your message has been sent — we'll be in touch soon.</div>
+          <?php elseif ($spam): ?>
+            <div class="alert alert-error">We couldn't verify you're human. Please try again.</div>
           <?php elseif ($error): ?>
             <div class="alert alert-error">Something went wrong. Please try again or email us at <a href="mailto:info@softercolor.com">info@softercolor.com</a>.</div>
           <?php endif; ?>
 
           <form action="/public/form-handler.php" method="POST" novalidate>
             <p class="required-note">Fields marked <span style="color: var(--color-error);" aria-hidden="true">*</span> <span class="visually-hidden">with an asterisk</span> are required.</p>
+
+            <!-- Honeypot field: hidden from real users via CSS, bots that auto-fill every input will trip it -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Timing trap: timestamp the form was rendered, checked server-side -->
+            <input type="hidden" name="form_ts" value="<?= time() ?>">
+
             <div class="grid-2" style="gap: var(--space-4);">
               <div class="form-group" style="margin-bottom: 0;">
                 <label for="name">Name <span style="color: var(--color-error);">*</span></label>
@@ -71,6 +93,11 @@ $preInquiry = $inquiryMap[$preSelected] ?? '';
             <div class="form-group">
               <label for="message">Message <span style="color: var(--color-error);">*</span></label>
               <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, challenge, or question..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="human_check">What is <?= $num1 ?> + <?= $num2 ?>? <span style="color: var(--color-error);">*</span> <span class="visually-hidden">Human verification question — this helps us block spam.</span></label>
+              <input type="text" id="human_check" name="human_check" inputmode="numeric" autocomplete="off" required style="max-width: 120px;">
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Message</button>

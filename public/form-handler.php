@@ -1,5 +1,8 @@
 <?php
 // Contact form handler — sends inquiry to info@softercolor.com via PHPMailer
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -21,6 +24,35 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /contact');
     exit;
 }
+
+// ── Human verification (bot screening, no external API) ──────────────
+// 1. Honeypot: real users never see/fill this field (hidden via CSS).
+// 2. Timing trap: forms submitted faster than a human can realistically
+//    read + fill (or after the session has expired) are rejected.
+// 3. Math challenge: answer must match the one generated for this session.
+if (!empty($_POST['website'])) {
+    error_log('Contact form blocked: honeypot filled');
+    header('Location: /contact?error=bot');
+    exit;
+}
+
+$formTs = (int)($_POST['form_ts'] ?? 0);
+$elapsed = time() - $formTs;
+if ($formTs <= 0 || $elapsed < 3 || $elapsed > 1800) {
+    error_log("Contact form blocked: timing trap (elapsed={$elapsed}s)");
+    header('Location: /contact?error=bot');
+    exit;
+}
+
+$humanCheck = trim($_POST['human_check'] ?? '');
+$expected   = $_SESSION['hc_answer'] ?? null;
+if ($expected === null || !ctype_digit($humanCheck) || (int)$humanCheck !== (int)$expected) {
+    error_log('Contact form blocked: human verification failed');
+    unset($_SESSION['hc_answer'], $_SESSION['hc_issued_at']);
+    header('Location: /contact?error=bot');
+    exit;
+}
+unset($_SESSION['hc_answer'], $_SESSION['hc_issued_at']);
 
 // Sanitize inputs
 $name         = htmlspecialchars(trim($_POST['name'] ?? ''));

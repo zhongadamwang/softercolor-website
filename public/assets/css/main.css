@@ -697,3 +697,13 @@ main a:not(.btn):not(.logo):hover {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Honeypot field: hidden from sighted users and screen readers, but still
+   present in the DOM so naive bots that auto-fill every form field trip it. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
